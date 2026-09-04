@@ -1,0 +1,9 @@
+const baseSubmit=submit,baseDeath=death;
+submit=function(){if(state.selected===null||state.answered)return;let correct=state.selected===QUESTION_BANK[state.index].answer;baseSubmit();sound(correct?"ok":"wrong");if(correct&&state.streak>=3&&state.symptoms.length){state.symptoms.pop();state.health=Math.min(100,state.health+5);el.consequence.textContent+=" 連続正解で症状を1つ治療し、体調が5回復。";status();avatar(null)}};
+death=function(){sound("death");$("#finalTotal").textContent=QUESTION_BANK.length;$("#reviewButton").hidden=!state.review.length;baseDeath()};
+finish=function(){let ratio=state.score/QUESTION_BANK.length;$("#finalScore").textContent=state.score;$("#finalTotal").textContent=QUESTION_BANK.length;$("#finalHealth").textContent=state.health;$("#reviewCount").textContent=state.review.length;$("#reviewButton").hidden=!state.review.length;$("#resultMessage").textContent=ratio>=.8?"病態の連鎖を断ち切りました。根拠のある判断ができています。":ratio>=.5?"夜勤完了。誤答症例を確認しましょう。":"症状が蓄積しました。間違いだけ復習して立て直しましょう。";el.modal.hidden=false;save()};
+function startReview(){let ids=new Set(state.review),missed=fullBank.filter(q=>ids.has(q.id));if(!missed.length)return;QUESTION_BANK=shuffle(missed);reset();$("#resultEyebrow").textContent="REVIEW SHIFT";$("#finalTotal").textContent=QUESTION_BANK.length}
+function startFull(){QUESTION_BANK=shuffle([...fullBank]);reset();$("#finalTotal").textContent=QUESTION_BANK.length}
+el.submit.onclick=submit;$("#reviewButton").onclick=startReview;$("#retryButton").onclick=startFull;
+$("#soundButton").onclick=e=>{soundOn=!soundOn;e.currentTarget.textContent=soundOn?"♪":"♪×";e.currentTarget.classList.toggle("sound-on",soundOn);e.currentTarget.setAttribute("aria-label",soundOn?"サウンドをオフにする":"サウンドをオンにする");if(soundOn)tone(660,.12)};
+QUESTION_BANK=shuffle([...fullBank]);$("#finalTotal").textContent=QUESTION_BANK.length;render();
