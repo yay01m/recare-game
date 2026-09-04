@@ -1,0 +1,2 @@
+.title-screen[hidden]{display:none}
+.title-screen:not([hidden])~.legal-note{display:none}
