@@ -22,7 +22,7 @@
 
 ## 誤り報告の受信設定
 
-`config.js` の `feedbackEmail` に受信用メールアドレスを設定します。現在は `recare.feedback@gmail.com` です。利用者のメールアプリを開き、問題番号・回答・解説を含む報告メールを作成します。控えはブラウザの `localStorage` にも保存します。
+`config.js` の `feedbackEmail` に受信用メールアドレスを設定します。現在は `recare.feedback@gmail.com` です。FormSubmitのAJAXエンドポイントへ直接送信するため、報告者のメールアプリは開きません。最初の報告時に受信先へ届く有効化メールの承認が必要です。控えはブラウザの `localStorage` にも保存します。
 - PC／スマートフォン対応
 
 ## 出典と注意
