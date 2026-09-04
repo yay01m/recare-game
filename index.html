@@ -4,18 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="判断ミスが自分の症状として返ってくる、看護師国家試験対策ゲーム">
+  <meta name="theme-color" content="#071b20">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
   <title>RE:CARE — 逆流病棟</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="title-fix.css">
+  <link rel="stylesheet" href="premium.css">
+  <link rel="stylesheet" href="avatar-upgrade.css">
+  <link rel="stylesheet" href="cinematic.css">
+  <link rel="stylesheet" href="anatomy.css">
+  <link rel="stylesheet" href="auth.css">
+  <link rel="stylesheet" href="polish.css">
 </head>
 <body>
   <div class="noise"></div>
   <section class="title-screen" id="titleScreen">
     <div class="title-grid"></div><div class="title-glow"></div>
-    <header class="title-top"><span>RE:CARE PROJECT</span><span>PATHOLOGY LINK SYSTEM · 122 CASES</span></header>
+    <header class="title-top"><span>RE:CARE PROJECT</span><span>PATHOLOGY LINK SYSTEM · 300 CASES</span></header>
     <div class="title-content">
       <div class="title-copy">
         <p class="title-kicker"><i></i> NURSING EXAM × SURVIVAL</p>
@@ -117,6 +126,17 @@
             <path class="body-part arm" d="M58 82 Q42 88 35 111 L18 174 Q16 184 25 187 Q34 189 38 179 L59 124Z"/><path class="body-part arm" d="M122 82 Q138 88 145 111 L162 174 Q164 184 155 187 Q146 189 142 179 L121 124Z"/>
             <path class="body-part leg" d="M60 165 Q74 174 88 177 L79 262 Q78 278 65 278 Q53 277 55 262Z"/><path class="body-part leg" d="M120 165 Q106 174 92 177 L101 262 Q102 278 115 278 Q127 277 125 262Z"/>
             <path class="lung" d="M83 91 Q61 96 62 125 Q64 148 84 145Z"/><path class="lung" d="M97 91 Q119 96 118 125 Q116 148 96 145Z"/><path class="heart" d="M90 132 C78 120 70 137 90 152 C110 137 102 120 90 132Z"/>
+            <g class="anatomy-organs">
+              <path class="organ brain" d="M72 31 Q72 17 86 16 Q96 12 106 20 Q113 27 107 39 Q101 45 91 43 Q81 47 74 40Z"/>
+              <path class="organ airway" d="M87 61 L93 61 L95 94 L85 94Z"/>
+              <path class="organ liver" d="M88 151 Q105 145 121 153 L118 169 Q102 173 89 165Z"/>
+              <path class="organ stomach" d="M79 150 Q91 149 92 160 Q94 172 82 178 Q72 173 76 162Z"/>
+              <path class="organ kidney kidney-left" d="M68 157 Q59 161 63 174 Q69 182 76 173 Q78 162 68 157Z"/>
+              <path class="organ kidney kidney-right" d="M112 157 Q121 161 117 174 Q111 182 104 173 Q102 162 112 157Z"/>
+              <path class="organ intestine" d="M72 180 Q90 174 108 180 L107 205 Q90 212 73 205Z"/>
+              <path class="organ bladder" d="M82 211 Q90 204 98 211 Q101 222 90 228 Q79 222 82 211Z"/>
+              <circle class="organ joint joint-ls" cx="49" cy="91" r="5"/><circle class="organ joint joint-rs" cx="131" cy="91" r="5"/><circle class="organ joint joint-lk" cx="68" cy="221" r="5"/><circle class="organ joint joint-rk" cx="112" cy="221" r="5"/>
+            </g>
             <circle class="pain-point foot" cx="67" cy="269" r="9"/><circle class="pain-point shoulder" cx="127" cy="88" r="9"/>
             <g class="sick-marks"><circle cx="74" cy="106" r="5"/><circle cx="111" cy="155" r="7"/><circle cx="70" cy="205" r="4"/></g><g class="pain-burst"><path d="M45 254 l-10 -8 m12 16 l-13 4 m20 2 l-5 12"/><path d="M137 70 l8 -10 m-2 18 l13 -2 m-17 12 l10 8"/></g>
           </svg>
@@ -150,7 +170,17 @@
   <script src="disease-pack.js"></script>
   <script src="expanded-disease-pack.js"></script>
   <script src="expanded-disease-pack-2.js"></script>
+  <script src="mega-disease-pack.js"></script>
+  <script src="question-quality.js"></script>
   <script src="app.js"></script>
   <script src="improvements.js"></script>
+  <script src="cloud-config.js"></script>
+  <script src="cloud-sync.js"></script>
+  <script src="auth.js"></script>
+  <script src="premium.js"></script>
+  <script src="avatar-upgrade.js"></script>
+  <script src="damage-model.js"></script>
+  <script src="anatomy.js"></script>
+  <script src="polish.js"></script>
 </body>
 </html>
