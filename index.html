@@ -9,10 +9,31 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="title-fix.css">
 </head>
 <body>
   <div class="noise"></div>
-  <main class="app-shell">
+  <section class="title-screen" id="titleScreen">
+    <div class="title-grid"></div><div class="title-glow"></div>
+    <header class="title-top"><span>RE:CARE PROJECT</span><span>PATHOLOGY LINK SYSTEM · 122 CASES</span></header>
+    <div class="title-content">
+      <div class="title-copy">
+        <p class="title-kicker"><i></i> NURSING EXAM × SURVIVAL</p>
+        <h1><span>RE:</span>CARE</h1><p class="title-jp">逆流病棟</p>
+        <p class="title-lead">間違えた病態が、あなたの身体に疑似再現される。<br>知識で症状を見抜き、夜勤を生き抜け。</p>
+        <div class="title-actions"><button class="start-btn" id="startGame"><small>NEW SHIFT</small>夜勤を開始する <b>→</b></button><button class="how-btn" id="howButton">遊び方</button></div>
+        <div class="last-result" id="lastResult"><span>LAST RECORD</span><b>記録なし</b></div>
+      </div>
+      <div class="title-visual">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <svg class="title-body" viewBox="0 0 180 290" aria-hidden="true"><circle cx="90" cy="38" r="25"/><path d="M58 77 Q90 60 122 77 L132 166 Q113 181 90 181 Q67 181 48 166Z"/><path d="M58 82 Q42 88 35 111 L18 174 Q16 184 25 187 Q34 189 38 179 L59 124Z M122 82 Q138 88 145 111 L162 174 Q164 184 155 187 Q146 189 142 179 L121 124Z"/><path d="M60 165 Q74 174 88 177 L79 262 Q78 278 65 278 Q53 277 55 262Z M120 165 Q106 174 92 177 L101 262 Q102 278 115 278 Q127 277 125 262Z"/><path class="title-heart" d="M90 122 C75 107 65 129 90 150 C115 129 105 107 90 122Z"/></svg>
+        <div class="title-diagnostic d1"><span>SpO₂</span><b>98%</b></div><div class="title-diagnostic d2"><span>PATHOLOGY LINK</span><b>READY</b></div><div class="title-diagnostic d3"><span>CASE POOL</span><b>122</b></div>
+      </div>
+    </div>
+    <footer class="title-footer"><span>学習補助用 · 独自解説を含みます</span><span>v0.4 PROTOTYPE</span></footer>
+    <div class="how-panel" id="howPanel" hidden><button id="howClose">×</button><p class="eyebrow">HOW TO PLAY</p><h2>夜勤を生き抜く</h2><ol><li><b>病態を判断</b><span>疾患・症状・緊急対応の四択問題に答えます。</span></li><li><b>誤答を疑似体験</b><span>間違えた病態がアバターに再現され、耐性が低下します。</span></li><li><b>知識で回復</b><span>3問連続正解すると病態リンクを解除できます。</span></li></ol><p>耐性が0になる前に、全20症例を完了してください。</p></div>
+  </section>
+  <main class="app-shell game-hidden" id="gameShell">
     <header class="topbar">
       <a class="brand" href="#" aria-label="RE:CARE ホーム">
         <span class="brand-mark">R</span>
@@ -24,7 +45,7 @@
 
     <section class="status-strip">
       <div class="status-copy">
-        <span class="eyebrow">YOUR CONDITION</span>
+        <span class="eyebrow">SIMULATION LOAD</span>
         <div class="condition-line"><strong id="conditionText">安定</strong><span id="conditionDetail">異常所見なし</span></div>
       </div>
       <div class="vitals">
@@ -33,7 +54,7 @@
         <div><span>FOCUS</span><strong id="focus">100</strong><small>%</small></div>
       </div>
       <div class="health-wrap">
-        <div><span>CONDITION</span><b id="healthValue">100</b></div>
+        <div><span>TOLERANCE</span><b id="healthValue">100</b></div>
         <div class="health-track"><i id="healthBar"></i></div>
       </div>
     </section>
@@ -87,7 +108,7 @@
         </footer>
       </section>
       <aside class="self-panel">
-        <div class="self-heading"><div><p class="eyebrow">SELF MONITOR</p><h2>あなたの身体</h2></div><span id="avatarState">STABLE</span></div>
+        <div class="self-heading"><div><p class="eyebrow">PATHOLOGY LINK</p><h2>症状シミュレーター</h2></div><span id="avatarState">STABLE</span></div>
         <div class="avatar-stage" id="avatarStage">
           <div class="scan-line"></div>
           <svg class="avatar" viewBox="0 0 180 290" role="img" aria-label="プレイヤーの身体状態">
@@ -126,6 +147,9 @@
   <footer class="legal-note">学習補助用｜解説は独自作成・未監修を含みます。診療判断には使用しないでください。<a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/tp260424-03_04_05.html" target="_blank" rel="noopener">出典：厚生労働省 第115回看護師国家試験</a></footer>
   <script src="config.js"></script>
   <script src="questions.js"></script>
+  <script src="disease-pack.js"></script>
+  <script src="expanded-disease-pack.js"></script>
+  <script src="expanded-disease-pack-2.js"></script>
   <script src="app.js"></script>
   <script src="improvements.js"></script>
 </body>
