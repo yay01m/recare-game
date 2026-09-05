@@ -19,12 +19,13 @@
   <link rel="stylesheet" href="anatomy.css">
   <link rel="stylesheet" href="auth.css">
   <link rel="stylesheet" href="polish.css">
+  <link rel="stylesheet" href="mypage.css">
 </head>
 <body>
   <div class="noise"></div>
   <section class="title-screen" id="titleScreen">
     <div class="title-grid"></div><div class="title-glow"></div>
-    <header class="title-top"><span>RE:CARE PROJECT</span><span>PATHOLOGY LINK SYSTEM · 300 CASES</span></header>
+    <header class="title-top"><span>RE:CARE PROJECT</span><span>PATHOLOGY LINK SYSTEM · 800 CASES</span></header>
     <div class="title-content">
       <div class="title-copy">
         <p class="title-kicker"><i></i> NURSING EXAM × SURVIVAL</p>
@@ -36,7 +37,7 @@
       <div class="title-visual">
         <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
         <svg class="title-body" viewBox="0 0 180 290" aria-hidden="true"><circle cx="90" cy="38" r="25"/><path d="M58 77 Q90 60 122 77 L132 166 Q113 181 90 181 Q67 181 48 166Z"/><path d="M58 82 Q42 88 35 111 L18 174 Q16 184 25 187 Q34 189 38 179 L59 124Z M122 82 Q138 88 145 111 L162 174 Q164 184 155 187 Q146 189 142 179 L121 124Z"/><path d="M60 165 Q74 174 88 177 L79 262 Q78 278 65 278 Q53 277 55 262Z M120 165 Q106 174 92 177 L101 262 Q102 278 115 278 Q127 277 125 262Z"/><path class="title-heart" d="M90 122 C75 107 65 129 90 150 C115 129 105 107 90 122Z"/></svg>
-        <div class="title-diagnostic d1"><span>SpO₂</span><b>98%</b></div><div class="title-diagnostic d2"><span>PATHOLOGY LINK</span><b>READY</b></div><div class="title-diagnostic d3"><span>CASE POOL</span><b>122</b></div>
+        <div class="title-diagnostic d1"><span>SpO₂</span><b>98%</b></div><div class="title-diagnostic d2"><span>PATHOLOGY LINK</span><b>READY</b></div><div class="title-diagnostic d3"><span>CASE POOL</span><b>800</b></div>
       </div>
     </div>
     <footer class="title-footer"><span>学習補助用 · 独自解説を含みます</span><span>v0.4 PROTOTYPE</span></footer>
@@ -49,6 +50,7 @@
         <span><strong>RE:CARE</strong><small>逆流病棟</small></span>
       </a>
       <div class="shift"><span class="pulse-dot"></span> NIGHT SHIFT <b>00:47</b></div>
+      <button class="end-shift-btn" id="endShiftButton" type="button">夜勤を終了</button>
       <button class="icon-btn" id="soundButton" aria-label="サウンドをオンにする" title="サウンド">♪×</button>
     </header>
 
@@ -88,7 +90,7 @@
 
       <section class="question-panel" id="questionPanel">
         <div class="question-head">
-          <span class="source-badge" id="sourceBadge">第115回 午後 14</span>
+          <span class="source-badge" id="sourceBadge">独自作成・疾患別演習</span>
           <span class="instruction">最も適切なものを1つ選択</span>
         </div>
         <div class="question-body">
@@ -122,20 +124,23 @@
           <div class="scan-line"></div>
           <svg class="avatar" viewBox="0 0 180 290" role="img" aria-label="プレイヤーの身体状態">
             <defs><linearGradient id="bodyFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d8ebe6"/><stop offset="1" stop-color="#91bdb5"/></linearGradient></defs>
-            <circle class="body-part head" cx="90" cy="38" r="25"/><g class="face"><path class="eye eye-left" d="M76 34 Q81 30 85 34"/><path class="eye eye-right" d="M95 34 Q100 30 104 34"/><path class="mouth" d="M80 50 Q90 43 100 50"/><path class="flush" d="M69 43 Q75 39 80 44 M101 44 Q107 39 112 43"/></g><g class="sweat"><path d="M116 24 C108 35 110 41 116 41 C122 41 124 35 116 24Z"/><path d="M65 31 C59 39 60 44 65 44 C70 44 71 39 65 31Z"/></g><path class="body-part torso" d="M58 77 Q90 60 122 77 L132 166 Q113 181 90 181 Q67 181 48 166Z"/>
+            <circle class="body-part head" cx="90" cy="38" r="25"/><g class="face"><path class="eye eye-left" d="M76 34 Q81 30 85 34"/><path class="eye eye-right" d="M95 34 Q100 30 104 34"/><path class="mouth" d="M80 50 Q90 43 100 50"/><path class="flush" d="M69 43 Q75 39 80 44 M101 44 Q107 39 112 43"/></g><g class="sweat"><path d="M116 24 C108 35 110 41 116 41 C122 41 124 35 116 24Z"/><path d="M65 31 C59 39 60 44 65 44 C70 44 71 39 65 31Z"/></g><path class="body-part torso" d="M58 77 Q90 60 122 77 L132 177 Q124 194 90 199 Q56 194 48 177Z"/>
             <path class="body-part arm" d="M58 82 Q42 88 35 111 L18 174 Q16 184 25 187 Q34 189 38 179 L59 124Z"/><path class="body-part arm" d="M122 82 Q138 88 145 111 L162 174 Q164 184 155 187 Q146 189 142 179 L121 124Z"/>
-            <path class="body-part leg" d="M60 165 Q74 174 88 177 L79 262 Q78 278 65 278 Q53 277 55 262Z"/><path class="body-part leg" d="M120 165 Q106 174 92 177 L101 262 Q102 278 115 278 Q127 277 125 262Z"/>
-            <path class="lung" d="M83 91 Q61 96 62 125 Q64 148 84 145Z"/><path class="lung" d="M97 91 Q119 96 118 125 Q116 148 96 145Z"/><path class="heart" d="M90 132 C78 120 70 137 90 152 C110 137 102 120 90 132Z"/>
+            <path class="body-part leg" d="M60 190 Q74 196 88 198 L79 262 Q78 278 65 278 Q53 277 55 262Z"/><path class="body-part leg" d="M120 190 Q106 196 92 198 L101 262 Q102 278 115 278 Q127 277 125 262Z"/>
+            <path class="lung" d="M82 87 Q64 91 62 114 Q61 135 78 143 Q85 139 85 122 L85 94Z"/><path class="lung" d="M98 87 Q116 91 118 114 Q119 135 102 143 Q95 139 95 122 L95 94Z"/><path class="heart" d="M91 116 C83 108 74 119 79 130 Q83 138 91 145 Q99 137 104 129 Q110 116 100 112 Q95 111 91 116Z"/>
             <g class="anatomy-organs">
               <path class="organ brain" d="M72 31 Q72 17 86 16 Q96 12 106 20 Q113 27 107 39 Q101 45 91 43 Q81 47 74 40Z"/>
               <path class="organ airway" d="M87 61 L93 61 L95 94 L85 94Z"/>
-              <path class="organ liver" d="M88 151 Q105 145 121 153 L118 169 Q102 173 89 165Z"/>
-              <path class="organ stomach" d="M79 150 Q91 149 92 160 Q94 172 82 178 Q72 173 76 162Z"/>
-              <path class="organ kidney kidney-left" d="M68 157 Q59 161 63 174 Q69 182 76 173 Q78 162 68 157Z"/>
-              <path class="organ kidney kidney-right" d="M112 157 Q121 161 117 174 Q111 182 104 173 Q102 162 112 157Z"/>
-              <path class="organ intestine" d="M72 180 Q90 174 108 180 L107 205 Q90 212 73 205Z"/>
-              <path class="organ bladder" d="M82 211 Q90 204 98 211 Q101 222 90 228 Q79 222 82 211Z"/>
-              <circle class="organ joint joint-ls" cx="49" cy="91" r="5"/><circle class="organ joint joint-rs" cx="131" cy="91" r="5"/><circle class="organ joint joint-lk" cx="68" cy="221" r="5"/><circle class="organ joint joint-rk" cx="112" cy="221" r="5"/>
+              <path class="organ kidney kidney-left" d="M66 151 C57 153 57 166 63 171 C70 176 77 167 75 157 C73 153 70 151 66 151Z"/>
+              <path class="organ kidney kidney-right" d="M114 151 C123 153 123 166 117 171 C110 176 103 167 105 157 C107 153 110 151 114 151Z"/>
+              <path class="organ ureter" d="M70 168 C72 178 78 181 84 187 M110 168 C108 178 102 181 96 187"/>
+              <path class="organ liver" d="M56 140 Q75 134 98 142 Q99 151 94 158 Q73 163 57 155Z"/>
+              <path class="organ stomach" d="M103 143 C114 141 120 148 116 156 C112 164 118 169 109 174 C99 176 96 166 101 158 C105 153 105 148 103 143Z"/>
+              <path class="organ intestine colon" d="M69 166 Q90 160 111 166 L111 194 Q90 202 69 194Z"/>
+              <path class="organ intestine intestine-loop" d="M78 171 C91 165 104 171 101 179 C98 185 78 176 77 184 C76 192 97 194 103 186"/>
+              <path class="organ bladder" d="M82 184 Q90 179 98 184 Q101 194 96 199 Q90 204 84 199 Q79 194 82 184Z"/>
+              <path class="organ pelvis-guide" d="M70 181 Q90 205 110 181"/>
+              <circle class="organ joint joint-ls" cx="49" cy="91" r="5"/><circle class="organ joint joint-rs" cx="131" cy="91" r="5"/><path class="organ joint knee joint-lk" d="M59 224 Q68 219 77 224 Q68 230 59 224Z"/><path class="organ joint knee joint-rk" d="M103 224 Q112 219 121 224 Q112 230 103 224Z"/>
             </g>
             <circle class="pain-point foot" cx="67" cy="269" r="9"/><circle class="pain-point shoulder" cx="127" cy="88" r="9"/>
             <g class="sick-marks"><circle cx="74" cy="106" r="5"/><circle cx="111" cy="155" r="7"/><circle cx="70" cy="205" r="4"/></g><g class="pain-burst"><path d="M45 254 l-10 -8 m12 16 l-13 4 m20 2 l-5 12"/><path d="M137 70 l8 -10 m-2 18 l13 -2 m-17 12 l10 8"/></g>
@@ -158,19 +163,22 @@
       <div class="score-ring"><strong id="finalScore">0</strong><span>/ <b id="finalTotal">15</b></span></div>
       <p id="resultMessage"></p>
       <div class="result-stats"><span>最終体調 <b id="finalHealth">100</b></span><span>要復習 <b id="reviewCount">0</b></span></div>
-      <div class="result-actions"><button class="secondary-btn" id="reviewButton">間違いだけ復習</button><button class="primary-btn" id="retryButton">もう一度挑戦 →</button></div>
+      <div class="result-actions"><button class="secondary-btn" id="resultHomeButton">タイトルへ戻る</button><button class="secondary-btn" id="reviewButton">間違いだけ復習</button><button class="primary-btn" id="retryButton">もう一度挑戦 →</button></div>
     </div>
   </div>
 
   <div class="report-modal" id="reportModal" hidden><form class="report-card" id="reportForm"><button type="button" class="report-close" id="reportClose">×</button><p class="eyebrow">REPORT AN ERROR</p><h2>解説の誤りを報告</h2><p class="report-question" id="reportQuestion"></p><label>問題の種類<select id="reportType"><option>正答が違う</option><option>解説が不正確</option><option>情報が古い</option><option>誤字・表示崩れ</option><option>その他</option></select></label><label>詳しい内容<textarea id="reportMessage" required minlength="5" rows="5" placeholder="どの部分が、なぜ間違っていると思うか教えてください"></textarea></label><label>返信先メール（任意）<input id="reportReply" type="email"></label><p class="report-note">問題番号・回答・解説も自動で含まれます。</p><button class="primary-btn" type="submit">報告を送る →</button><p class="report-status" id="reportStatus"></p></form></div>
 
-  <footer class="legal-note">学習補助用｜解説は独自作成・未監修を含みます。診療判断には使用しないでください。<a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/tp260424-03_04_05.html" target="_blank" rel="noopener">出典：厚生労働省 第115回看護師国家試験</a></footer>
+  <footer class="legal-note">学習補助用｜問題・解説は独自作成で、医療専門職による監修前の内容を含みます。実際の診療判断には使用しないでください。</footer>
   <script src="config.js"></script>
   <script src="questions.js"></script>
   <script src="disease-pack.js"></script>
   <script src="expanded-disease-pack.js"></script>
   <script src="expanded-disease-pack-2.js"></script>
   <script src="mega-disease-pack.js"></script>
+  <script src="original-only.js"></script>
+  <script src="category-normalizer.js"></script>
+  <script src="balanced-question-pack.js"></script>
   <script src="question-quality.js"></script>
   <script src="app.js"></script>
   <script src="improvements.js"></script>
@@ -182,5 +190,8 @@
   <script src="damage-model.js"></script>
   <script src="anatomy.js"></script>
   <script src="polish.js"></script>
+  <script src="mypage.js"></script>
+  <script src="admin-play.js"></script>
+  <script src="shift-navigation.js"></script>
 </body>
 </html>

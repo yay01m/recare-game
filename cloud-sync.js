@@ -8,6 +8,10 @@ let timer;
 async function flush(profile){let s=session();if(!s)return;window.dispatchEvent(new CustomEvent("recare-cloud-status",{detail:"syncing"}));try{let ok=await rpc("recare_save",{p_username:s.username,p_session_token:s.token,p_profile:profile});if(!ok)throw new Error("セッションの有効期限が切れました");localStorage.removeItem(PENDING);window.dispatchEvent(new CustomEvent("recare-cloud-status",{detail:"saved"}))}catch(error){localStorage.setItem(PENDING,JSON.stringify(profile));window.dispatchEvent(new CustomEvent("recare-cloud-status",{detail:"error"}))}}
 function save(profile){if(!enabled())return;localStorage.setItem(PENDING,JSON.stringify(profile));clearTimeout(timer);timer=setTimeout(()=>flush(profile),700)}
 function logout(){localStorage.removeItem(SESSION);localStorage.removeItem(PENDING)}
+async function updateAccount(newUsername,newPin){let s=session();if(!s)throw new Error("再ログインが必要です");let data=await rpc("recare_update_account",{p_username:s.username,p_session_token:s.token,p_new_username:newUsername,p_new_pin:newPin||null});if(data?.error)throw new Error(data.error);s.username=data.username;s.displayName=data.display_name;localStorage.setItem(SESSION,JSON.stringify(s));return s}
+async function deleteAccount(){let s=session();if(!s)throw new Error("再ログインが必要です");let ok=await rpc("recare_delete_account",{p_username:s.username,p_session_token:s.token});if(!ok)throw new Error("退会処理を完了できませんでした");logout();return true}
+async function leaderboard(limit=50){return await rpc("recare_leaderboard",{p_limit:limit})}
+async function adminDashboard(){let s=session();if(!s)throw new Error("再ログインが必要です");return await rpc("recare_admin_dashboard",{p_username:s.username,p_session_token:s.token})}
 window.addEventListener("online",()=>{try{let pending=JSON.parse(localStorage.getItem(PENDING));if(pending)flush(pending)}catch{}});
-window.RECARE_CLOUD={enabled,login,save,logout,session};
+window.RECARE_CLOUD={enabled,login,save,logout,session,updateAccount,deleteAccount,leaderboard,adminDashboard};
 })();
